@@ -71,6 +71,8 @@ namespace Vuforia
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
+            AudioSource ballena = GetComponentInChildren<AudioSource>();
+
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
             {
@@ -82,7 +84,8 @@ namespace Vuforia
             {
                 component.enabled = true;
             }
-
+            ballena.enabled = true;
+            ballena.Play();
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
 
@@ -91,7 +94,7 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
-
+            AudioSource ballena = GetComponentInChildren<AudioSource>();
             // Disable rendering:
             foreach (Renderer component in rendererComponents)
             {
@@ -105,6 +108,8 @@ namespace Vuforia
             }
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            ballena.enabled = false;
+            ballena.Stop();
         }
 
         #endregion // PRIVATE_METHODS
